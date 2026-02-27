@@ -103,8 +103,17 @@ class AddButton extends StatelessWidget {
   final String item;
   const AddButton({required this.item, super.key});
 
+
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    final isInCart = context.select<CartModel, bool>((cart) => cart._items.contains(item));
+    return TextButton(
+      onPressed: isInCart
+          ? null
+          : () {
+              context.read<CartModel>().add(item);
+            },
+    child: isInCart ? const Icon(Icons.check) : const Text('TAMBAH'),
+    );
   }
 }
