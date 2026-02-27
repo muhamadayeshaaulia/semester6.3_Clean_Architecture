@@ -100,7 +100,8 @@ class MyCart extends StatelessWidget {
 
 // membuat class AddButton
 class AddButton extends StatelessWidget {
-  const AddButton({super.key});
+  final String item;
+  const AddButton({required this.item, super.key});
 
   @override
   Widget build(BuildContext context) {
