@@ -4,5 +4,5 @@ abstract class CartRepositories {
   List<Product> getCartItems();
   void addItem(Product product);
   void removeAllItems();
-  bool isInCart(String productid);
+  bool isItemInCart(String productid);
 }
