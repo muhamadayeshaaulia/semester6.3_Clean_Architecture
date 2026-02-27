@@ -111,6 +111,7 @@ class AddButton extends StatelessWidget {
       onPressed: isInCart
           ? null
           : () {
+              // context.red itu untuk memanggil fungsi taanpa mendengarkan perubahan
               context.read<CartModel>().add(item);
             },
     child: isInCart ? const Icon(Icons.check, color: Colors.green,) : const Text('TAMBAH'),
