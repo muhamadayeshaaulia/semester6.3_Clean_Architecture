@@ -61,7 +61,13 @@ class MyCatalog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    final products = ['Nasi Goreng','Sate Ayam','Es Teh','Ayam Bakar','Kopi'];
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Catalog'),
+      ),
+    );
+    
   }
 }
 
