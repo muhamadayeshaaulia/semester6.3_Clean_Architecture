@@ -14,6 +14,7 @@ class CartModel extends ChangeNotifier {
     _items.add(item);
     notifyListeners();
   }
+
   void remove(String item) {
     _items.remove(item);
     notifyListeners();
@@ -55,13 +56,20 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 // membuat class catalog
 class MyCatalog extends StatelessWidget {
   const MyCatalog({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final products = ['Nasi Goreng','Sate Ayam','Es Teh','Ayam Bakar','Kopi'];
+    final products = [
+      'Nasi Goreng',
+      'Sate Ayam',
+      'Es Teh',
+      'Ayam Bakar',
+      'Kopi',
+    ];
     return Scaffold(
       appBar: AppBar(
         title: const Text('Catalog'),
@@ -84,7 +92,6 @@ class MyCatalog extends StatelessWidget {
         },
       ),
     );
-    
   }
 }
 
@@ -94,14 +101,24 @@ class MyCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   // context.watch itu untuk mendengarkan perubahan pada model
-   //setiap kali ada perubahan pada model, widget ini akan di rebuild
+    // context.watch itu untuk mendengarkan perubahan pada model
+    //setiap kali ada perubahan pada model, widget ini akan di rebuild
     var cart = context.watch<CartModel>();
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Keranjang Belanja'),
+      appBar: AppBar(title: const Text('Keranjang Belanja')),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: cart._items.length,
+              itemBuilder: (context, index) => ListTile(
+                leading: const Icon(Icons.fastfood),
+                title: Text(cart._items[index]),
+              ),
+            ),
+          ),
+        ],
       ),
-      
     );
   }
 }
@@ -111,10 +128,11 @@ class AddButton extends StatelessWidget {
   final String item;
   const AddButton({required this.item, super.key});
 
-
   @override
   Widget build(BuildContext context) {
-    final isInCart = context.select<CartModel, bool>((cart) => cart._items.contains(item));
+    final isInCart = context.select<CartModel, bool>(
+      (cart) => cart._items.contains(item),
+    );
     return TextButton(
       onPressed: isInCart
           ? null
@@ -122,7 +140,9 @@ class AddButton extends StatelessWidget {
               // context.red itu untuk memanggil fungsi taanpa mendengarkan perubahan
               context.read<CartModel>().add(item);
             },
-    child: isInCart ? const Icon(Icons.check, color: Colors.green,) : const Text('TAMBAH'),
+      child: isInCart
+          ? const Icon(Icons.check, color: Colors.green)
+          : const Text('TAMBAH'),
     );
   }
 }
