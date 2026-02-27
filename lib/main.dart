@@ -113,7 +113,7 @@ class AddButton extends StatelessWidget {
           : () {
               context.read<CartModel>().add(item);
             },
-    child: isInCart ? const Icon(Icons.check) : const Text('TAMBAH'),
+    child: isInCart ? const Icon(Icons.check, color: Colors.green,) : const Text('TAMBAH'),
     );
   }
 }
