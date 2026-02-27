@@ -18,7 +18,7 @@ class CatalogPage extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.shopping_cart),
-            onPressed: () => Navigator.pushNamed(context, AppRouter.cart),
+            onPressed: () => Navigator.pushNamed(context, AppRouter.cartRoute),
           ),
         ],
       ),
