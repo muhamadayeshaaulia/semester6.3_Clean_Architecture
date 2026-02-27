@@ -14,7 +14,14 @@ class AddButtonWidget extends StatelessWidget {
     return TextButton(
       onPressed: isInCart
           ? null
-          : () => context.read<CartProvider>().addItem(product),
+          : () {
+              context.read<CartProvider>().addItem(product);
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('${product.name} ditambahkan ke keranjang'),
+                ),
+              );
+            },
       child: isInCart
           ? const Icon(Icons.check, color: Colors.green)
           : const Text('TAMBAH'),
