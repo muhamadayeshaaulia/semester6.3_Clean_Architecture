@@ -97,7 +97,12 @@ class MyCart extends StatelessWidget {
    // context.watch itu untuk mendengarkan perubahan pada model
    //setiap kali ada perubahan pada model, widget ini akan di rebuild
     var cart = context.watch<CartModel>();
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Keranjang Belanja'),
+      ),
+      
+    );
   }
 }
 
