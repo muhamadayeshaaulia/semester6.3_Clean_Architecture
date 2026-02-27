@@ -9,17 +9,18 @@ void main() {
 
 class CartModel extends ChangeNotifier {
   final List<String> _items = [];
+  List<String> get items => _items;
 
-  void add(String item) {
-    _items.add(item);
+  void add(String itemName) {
+    _items.add(itemName);
     notifyListeners();
   }
-
-  void remove(String item) {
-    _items.remove(item);
+  void removeAll() {
+    _items.clear();
     notifyListeners();
   }
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
