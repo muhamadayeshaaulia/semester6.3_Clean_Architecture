@@ -1,7 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
+
+  ChangeNotifierProvider(create: (context) => CartModel(), child: MyApp());
+}
+
+class CartModel extends ChangeNotifier {
+  final List<String> _items = [];
+
+  void add(String item) {
+    _items.add(item);
+    notifyListeners();
+  }
+  void remove(String item) {
+    _items.remove(item);
+    notifyListeners();
+  }
 }
 
 class MyApp extends StatelessWidget {
