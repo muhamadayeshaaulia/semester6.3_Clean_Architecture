@@ -94,6 +94,9 @@ class MyCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+   // context.watch itu untuk mendengarkan perubahan pada model
+   //setiap kali ada perubahan pada model, widget ini akan di rebuild
+    var cart = context.watch<CartModel>();
     return Scaffold();
   }
 }
