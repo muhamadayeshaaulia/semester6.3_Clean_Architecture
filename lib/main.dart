@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
-
-  ChangeNotifierProvider(create: (context) => CartModel(), child: MyApp());
+  runApp(
+    ChangeNotifierProvider(create: (context) => CartModel(), child: MyApp()),
+  );
 }
 
 class CartModel extends ChangeNotifier {
@@ -15,12 +15,12 @@ class CartModel extends ChangeNotifier {
     _items.add(itemName);
     notifyListeners();
   }
+
   void removeAll() {
     _items.clear();
     notifyListeners();
   }
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -30,6 +30,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Clean Architecture',
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const MyCatalog(),
+        '/cart': (context) => const MyCart(),
+      },
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -48,12 +54,6 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const MyCatalog(),
-        '/cart': (context) => const MyCart(),
-      },
-      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -112,8 +112,7 @@ class MyCart extends StatelessWidget {
           Expanded(
             child: ListView.builder(
               itemCount: cart.items.length,
-              itemBuilder: (context, index) => 
-              ListTile(
+              itemBuilder: (context, index) => ListTile(
                 leading: const Icon(Icons.fastfood),
                 title: Text(cart.items[index]),
               ),
@@ -124,12 +123,13 @@ class MyCart extends StatelessWidget {
             padding: const EdgeInsets.all(20),
             child: ElevatedButton(
               onPressed: () => cart.removeAll(),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+              child: const Text(
+                'HAPUS KERANJANG',
+                style: TextStyle(color: Colors.white),
               ),
-              child: const Text('HAPUS KERANJANG', style: TextStyle(color: Colors.white)),
             ),
-          )
+          ),
         ],
       ),
     );
