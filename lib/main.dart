@@ -65,6 +65,14 @@ class MyCatalog extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Catalog'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.shopping_cart),
+            onPressed: () {
+              Navigator.pushNamed(context, '/cart');
+            },
+          ),
+        ],
       ),
     );
     
