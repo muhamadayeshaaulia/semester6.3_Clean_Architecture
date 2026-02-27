@@ -64,3 +64,13 @@ class MyCatalog extends StatelessWidget {
     return Scaffold();
   }
 }
+
+// membuat class cart
+class MyCart extends StatelessWidget {
+  const MyCart({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold();
+  }
+}
