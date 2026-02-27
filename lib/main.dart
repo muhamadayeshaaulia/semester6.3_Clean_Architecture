@@ -74,3 +74,13 @@ class MyCart extends StatelessWidget {
     return Scaffold();
   }
 }
+
+// membuat class AddButton
+class AddButton extends StatelessWidget {
+  const AddButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}
