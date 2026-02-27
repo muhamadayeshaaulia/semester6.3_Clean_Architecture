@@ -110,13 +110,25 @@ class MyCart extends StatelessWidget {
         children: [
           Expanded(
             child: ListView.builder(
-              itemCount: cart._items.length,
-              itemBuilder: (context, index) => ListTile(
+              itemCount: cart.items.length,
+              itemBuilder: (context, index) => 
+              ListTile(
                 leading: const Icon(Icons.fastfood),
-                title: Text(cart._items[index]),
+                title: Text(cart.items[index]),
               ),
             ),
           ),
+          const Divider(),
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: ElevatedButton(
+              onPressed: () => cart.removeAll(),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red,
+              ),
+              child: const Text('HAPUS KERANJANG', style: TextStyle(color: Colors.white)),
+            ),
+          )
         ],
       ),
     );
