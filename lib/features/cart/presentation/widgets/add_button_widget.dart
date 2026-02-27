@@ -19,6 +19,10 @@ class AddButtonWidget extends StatelessWidget {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text('${product.name} ditambahkan ke keranjang'),
+                  action: SnackBarAction(
+                    label: 'Lihat Keranjang', 
+                    onPressed: () => Navigator.pushNamed(
+                      context, '/cart')),
                 ),
               );
             },
