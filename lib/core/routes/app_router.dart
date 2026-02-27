@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stateman_with_provider/features/cart/presentation/pages/catalog_page.dart';
+import 'package:stateman_with_provider/features/cart/presentation/pages/cart_page.dart';
 
 
 class AppRouter {
@@ -7,6 +8,6 @@ class AppRouter {
   static const String cartRoute = '/cart';
   static Map<String, WidgetBuilder> get routes => {
     catalogRoute: (context) => const CatalogPage(),
-    cartRoute: (context) => const MyCart(),
+    cartRoute: (context) => const CartPage(),
   };
 }
